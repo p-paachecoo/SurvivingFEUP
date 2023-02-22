@@ -11,12 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     new public Camera camera;
 
-    // Update is called once per frame
+    private Transform target;
+
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        
     }
 
     void FixedUpdate()

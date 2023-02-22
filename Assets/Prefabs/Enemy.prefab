@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6239271314123742855
+--- !u!1 &1920858163982815217
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9090510353952729729}
-  - component: {fileID: 7612700625112712735}
-  - component: {fileID: 3506278788461389161}
-  - component: {fileID: 3188851717335090033}
-  - component: {fileID: 7212754174094391270}
+  - component: {fileID: 4400640797338241303}
+  - component: {fileID: 4488943179505617111}
+  - component: {fileID: 1990075296619107618}
+  - component: {fileID: 3637651841140682619}
+  - component: {fileID: 4823091863699857218}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -20,28 +20,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9090510353952729729
+--- !u!4 &4400640797338241303
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6239271314123742855}
+  m_GameObject: {fileID: 1920858163982815217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.4, y: 9.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7.364403, y: 1.5, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7612700625112712735
+--- !u!212 &4488943179505617111
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6239271314123742855}
+  m_GameObject: {fileID: 1920858163982815217}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0da9c41db588c4d8f91cbcf05ba8d7c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95e33b572924d42a98d0cbde1a1755bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,13 +87,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3506278788461389161
+--- !u!61 &1990075296619107618
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6239271314123742855}
+  m_GameObject: {fileID: 1920858163982815217}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -119,40 +119,40 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5397053, y: 0.11546254}
+  m_Offset: {x: 0.0096690655, y: -0.0008869171}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.69, y: 5.69}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 6.69, y: 5.69}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.006752, y: 4.804788}
+  m_Size: {x: 0.70561934, y: 1.0040436}
   m_EdgeRadius: 0
---- !u!114 &3188851717335090033
+--- !u!114 &3637651841140682619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6239271314123742855}
+  m_GameObject: {fileID: 1920858163982815217}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c29e371393864db5a5242d9f99a948e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.5
---- !u!50 &7212754174094391270
+  moveSpeed: 5
+--- !u!50 &4823091863699857218
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6239271314123742855}
+  m_GameObject: {fileID: 1920858163982815217}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
