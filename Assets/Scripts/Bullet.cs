@@ -36,6 +36,17 @@ public class Bullet : MonoBehaviour
 
         if(transform != null)
         {
+            if(target != null)
+            {
+                Vector3 t = target.transform.position;
+                t.z = 0f;
+                Vector3 objectPos = transform.position;
+                t.x = t.x - objectPos.x;
+                t.y = t.y - objectPos.y;
+                float angle = (Mathf.Atan2(t.y, t.x) * Mathf.Rad2Deg) - 90f;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            }
+
             transform.Translate(dir.normalized * distanceThisFrame, Space.World);
         }
     }
