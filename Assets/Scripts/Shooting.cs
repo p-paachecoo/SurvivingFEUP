@@ -43,22 +43,6 @@ public class Shooting : MonoBehaviour
         GameObject bullet = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet b = bullet.GetComponent<Bullet>();
 
-        // necessário corrigir rotação, está mal
-        // Vector3 direction = target.position - transform.position;
-        // Quaternion look = Quaternion.LookRotation(direction);
-        // Vector3 rotation = look.eulerAngles;
-        // firePoint.rotation = Quaternion.Euler(0f, 0f, rotation.z);
-
-        // Vector2 direction = target.position - transform.position;
-        // Vector2 unity_direction = direction / Mathf.Sqrt(Mathf.Pow(direction.x,2) - Mathf.Pow(direction.y,2));
-        // Vector2 i = new Vector2(1,0);
-        // float angle = Mathf.Acos(Vector2.Dot(unity_direction, i));
-        // // float look = Mathf.Atan(direction);
-        // // firePoint.rotation.x = look;
-        // firePoint.transform.Rotate(0f, 0f, angle, Space.World);
-
-
-
         if(b != null)
             b.Seek(target);
     }

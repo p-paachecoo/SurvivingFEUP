@@ -6,12 +6,14 @@ public class Bullet : MonoBehaviour
 {
     private Transform target;
     public float speed = 15f;
+    private Vector3 aux_dir = new Vector3();
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
+            target = null;
         }
     }
 
@@ -20,24 +22,24 @@ public class Bullet : MonoBehaviour
         target = _target;
     }
 
+    void Start()
+    {
+        Transform player = GameObject.FindWithTag("Player").transform;
+        Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+
+    }
+
     void Update()
     {
         Vector3 dir = new Vector3(); 
         float distanceThisFrame = speed * Time.deltaTime;
 
-        if(target != null)
-        {
-            dir = target.position - transform.position;
-        } else
-        {   
-            // aqui sofre um ligeiro desvio de posição. necessário corrigir
-            transform.Translate(transform.position.normalized * distanceThisFrame, Space.World);
-        }
-
         if(transform != null)
         {
             if(target != null)
             {
+                dir = target.position - transform.position;
+                aux_dir = dir;
                 Vector3 t = target.transform.position;
                 t.z = 0f;
                 Vector3 objectPos = transform.position;
@@ -45,9 +47,13 @@ public class Bullet : MonoBehaviour
                 t.y = t.y - objectPos.y;
                 float angle = (Mathf.Atan2(t.y, t.x) * Mathf.Rad2Deg) - 90f;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                
+                transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+            } else if(target == null)
+            {
+                transform.Translate(aux_dir.normalized * distanceThisFrame, Space.World);
             }
 
-            transform.Translate(dir.normalized * distanceThisFrame, Space.World);
         }
     }
 }
