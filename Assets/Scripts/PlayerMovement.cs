@@ -21,6 +21,25 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        if(rb.position.x >= 30)
+        {
+            rb.position = new Vector2(30, rb.position.y);
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        } else if(rb.position.x <= -30)
+        {
+            rb.position = new Vector2(-30, rb.position.y);
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        } else if(rb.position.y >= 30)
+        {
+            rb.position = new Vector2(rb.position.x, 30);
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        } else if(rb.position.y <= -30)
+        {
+            rb.position = new Vector2(rb.position.x, -30);
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        } else
+        {
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        }
     }
 }
