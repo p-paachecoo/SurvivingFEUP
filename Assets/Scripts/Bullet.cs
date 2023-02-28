@@ -49,9 +49,16 @@ public class Bullet : MonoBehaviour
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
                 
                 transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+
             } else if(target == null)
             {
                 transform.Translate(aux_dir.normalized * distanceThisFrame, Space.World);
+            }
+
+            if(transform.position.x >= 45 || transform.position.x <= -45 || 
+                transform.position.y >= 45 || transform.position.y <= -45)
+            {
+                Destroy(gameObject);
             }
 
         }
