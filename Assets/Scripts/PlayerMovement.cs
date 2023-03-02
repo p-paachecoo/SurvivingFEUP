@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     new public Camera camera;
 
     public Shooting shooting;
+    private float shootingTime = 0f;
 
     private Transform target;
 
@@ -43,6 +44,17 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
+
+        if(shooting.fireRate == 10f)
+        {
+            shootingTime += 1;
+
+            if(shootingTime == 600f)
+            {
+                shootingTime = 0f;
+                shooting.fireRate = 5f;
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -50,10 +62,13 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.tag == "FireRatePowerup")
         {
             shooting.fireRate = 10f;
-        } else if(collision.gameObject.tag == "LifeCollectible")
+            shootingTime = 0f;
+        } 
+        else if(collision.gameObject.tag == "LifeCollectible")
         {
 
-        } else if(collision.gameObject.tag == "ScoreCollectible")
+        } 
+        else if(collision.gameObject.tag == "ScoreCollectible")
         {
 
         }

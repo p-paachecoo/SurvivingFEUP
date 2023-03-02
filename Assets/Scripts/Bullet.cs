@@ -26,6 +26,24 @@ public class Bullet : MonoBehaviour
     {
         Transform player = GameObject.FindWithTag("Player").transform;
         Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+        
+        if(GameObject.FindWithTag("LifeCollectible") != null)
+        {
+            Transform lifeCollectible = GameObject.FindWithTag("LifeCollectible").transform;
+            Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), lifeCollectible.GetComponent<Collider2D>());
+        }
+
+        if(GameObject.FindWithTag("ScoreCollectible") != null)
+        {
+            Transform scoreCollectible = GameObject.FindWithTag("ScoreCollectible").transform;
+            Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), scoreCollectible.GetComponent<Collider2D>());
+        }
+
+        if(GameObject.FindWithTag("FireRatePowerup") != null)
+        {
+            Transform fireRatePowerup = GameObject.FindWithTag("FireRatePowerup").transform;
+            Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), fireRatePowerup.GetComponent<Collider2D>());
+        }
 
     }
 

@@ -9,8 +9,8 @@ public class Shooting : MonoBehaviour
 
     [Header("Attributes")]
     private float fireCountdown = 0f;
-    public float range = 35f;
-    public float fireRate = 1f;
+    public float range = 20f;
+    public float fireRate = 5f;
 
     private GameObject bullet;
 
