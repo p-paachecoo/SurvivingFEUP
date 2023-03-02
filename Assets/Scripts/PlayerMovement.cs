@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Shooting shooting;
     private float shootingTime = 0f;
+    private float speedTime = 0f;
 
     private Transform target;
 
@@ -55,6 +56,17 @@ public class PlayerMovement : MonoBehaviour
                 shooting.fireRate = 5f;
             }
         }
+
+        if(speed == 15f)
+        {
+            speedTime += 1;
+
+            if(speedTime == 400f)
+            {
+                speedTime = 0f;
+                speed = 10f;
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -63,6 +75,11 @@ public class PlayerMovement : MonoBehaviour
         {
             shooting.fireRate = 10f;
             shootingTime = 0f;
+        } 
+        else if(collision.gameObject.tag == "SpeedPowerup")
+        {
+            speed = 15f;
+            speedTime = 0f;
         } 
         else if(collision.gameObject.tag == "LifeCollectible")
         {

@@ -9,6 +9,7 @@ TagManager:
   - FireRatePowerup
   - ScoreCollectible
   - LifeCollectible
+  - SpeedPowerup
   layers:
   - Default
   - TransparentFX

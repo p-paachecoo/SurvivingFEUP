@@ -45,6 +45,12 @@ public class Bullet : MonoBehaviour
             Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), fireRatePowerup.GetComponent<Collider2D>());
         }
 
+        if(GameObject.FindWithTag("SpeedPowerup") != null)
+        {
+            Transform speedPowerup = GameObject.FindWithTag("SpeedPowerup").transform;
+            Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), speedPowerup.GetComponent<Collider2D>());
+        }
+
     }
 
     void Update()
