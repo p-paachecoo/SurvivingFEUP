@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
+    // Public Fields
     public float speed = 10f;
     public Rigidbody2D rb;
     Vector2 movement;
@@ -12,15 +13,37 @@ public class PlayerMovement : MonoBehaviour
     new public Camera camera;
 
     public Shooting shooting;
+
+    public int maxHealth = 100;
+    public int currentHealth;
+
+    public HealthBar healthBar;
+
+    public GameManager gameManager;
+
+    public Score score;
+
+    // Private Fields
     private float shootingTime = 0f;
     private float speedTime = 0f;
 
     private Transform target;
 
+    void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if(currentHealth <= 0)
+        {
+            gameManager.EndGame();
+        }
     }
 
     void FixedUpdate()
@@ -83,11 +106,17 @@ public class PlayerMovement : MonoBehaviour
         } 
         else if(collision.gameObject.tag == "LifeCollectible")
         {
-
+            currentHealth += 10;
+            healthBar.SetHealth(currentHealth);
         } 
         else if(collision.gameObject.tag == "ScoreCollectible")
         {
-
+            score.AddScore(10);
+        }
+        else if(collision.gameObject.tag == "Enemy")
+        {
+            currentHealth -= 2;
+            healthBar.SetHealth(currentHealth);
         }
     }
 

@@ -8,12 +8,15 @@ public class Bullet : MonoBehaviour
     public float speed = 15f;
     private Vector3 aux_dir = new Vector3();
 
+    Score scoreScript;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
             target = null;
+            scoreScript.AddScore(1);
+            Destroy(gameObject);
         }
     }
 
@@ -27,6 +30,8 @@ public class Bullet : MonoBehaviour
         Transform player = GameObject.FindWithTag("Player").transform;
         Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
         
+        scoreScript = GameObject.Find("Player").GetComponent<Score>();
+
         if(GameObject.FindWithTag("LifeCollectible") != null)
         {
             Transform lifeCollectible = GameObject.FindWithTag("LifeCollectible").transform;
