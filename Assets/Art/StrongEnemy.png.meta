@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 51fcb3584030a41a0b497395aa5d2f39
+guid: ee467c518b8e84b67849d5386347685c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,13 +107,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New Piskel-11_0
+      name: StrongEnemy_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 41
-        width: 10
-        height: 14
+        x: 9
+        y: 40
+        width: 13
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3fb56413576c4be582d0d341e9436bb
-      internalID: 2015653439
+      spriteID: 7b959d293abed41ef8a21d6baf4546e8
+      internalID: -1626762655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel-11_1
+      name: StrongEnemy_1
       rect:
         serializedVersion: 2
-        x: 11
-        y: 9
-        width: 10
-        height: 14
+        x: 9
+        y: 8
+        width: 13
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 592170d4c536441b4aebcd722b52b61d
-      internalID: -226044581
+      spriteID: 7a4b32660268a4159ac791f1227ab357
+      internalID: -2093665892
       vertices: []
       indices: 
       edges: []
@@ -159,8 +159,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      New Piskel-11_0: 2015653439
-      New Piskel-11_1: -226044581
+      StrongEnemy_0: -1626762655
+      StrongEnemy_1: -2093665892
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

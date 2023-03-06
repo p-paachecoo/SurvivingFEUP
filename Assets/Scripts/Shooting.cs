@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Shooting : MonoBehaviour
 {
@@ -50,7 +51,9 @@ public class Shooting : MonoBehaviour
     void UpdateTarget()
     {
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies_normal = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies_strong = GameObject.FindGameObjectsWithTag("StrongEnemy");
+        GameObject[] enemies = enemies_normal.Concat(enemies_strong).ToArray();
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 

@@ -10,6 +10,7 @@ TagManager:
   - ScoreCollectible
   - LifeCollectible
   - SpeedPowerup
+  - StrongEnemy
   layers:
   - Default
   - TransparentFX

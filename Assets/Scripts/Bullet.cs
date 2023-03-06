@@ -18,6 +18,10 @@ public class Bullet : MonoBehaviour
             scoreScript.AddScore(1);
             Destroy(gameObject);
         }
+        if(collision.gameObject.tag == "StrongEnemy")
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Seek(Transform _target)

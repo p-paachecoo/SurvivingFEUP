@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     // Public Fields
-    public float speed = 10f;
+    public float speed = 12.5f;
     public Rigidbody2D rb;
     Vector2 movement;
 
@@ -22,6 +22,11 @@ public class PlayerMovement : MonoBehaviour
     public GameManager gameManager;
 
     public Score score;
+
+    public Animator animator;
+
+    public SpriteRenderer playerSprite;
+
 
     // Private Fields
     private float shootingTime = 0f;
@@ -39,6 +44,17 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if(movement.x < 0)
+        {
+            playerSprite.flipX = true;
+        }
+        else if(movement.x > 0)
+        {
+            playerSprite.flipX = false;
+        }
+
+        animator.SetFloat("Speed", Mathf.Max(Mathf.Abs(movement.x), Mathf.Abs(movement.y)));
 
         if(currentHealth <= 0)
         {
@@ -69,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
 
-        if(shooting.fireRate == 10f)
+        if(shooting.fireRate == 15f)
         {
             shootingTime += 1;
 
@@ -80,14 +96,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(speed == 15f)
+        if(speed == 20f)
         {
             speedTime += 1;
 
             if(speedTime == 400f)
             {
                 speedTime = 0f;
-                speed = 10f;
+                speed = 12.5f;
             }
         }
     }
@@ -96,12 +112,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "FireRatePowerup")
         {
-            shooting.fireRate = 10f;
+            shooting.fireRate += 10f;
             shootingTime = 0f;
         } 
         else if(collision.gameObject.tag == "SpeedPowerup")
         {
-            speed = 15f;
+            speed += 7.5f;
             speedTime = 0f;
         } 
         else if(collision.gameObject.tag == "LifeCollectible")
@@ -111,11 +127,16 @@ public class PlayerMovement : MonoBehaviour
         } 
         else if(collision.gameObject.tag == "ScoreCollectible")
         {
-            score.AddScore(10);
+            score.AddScore(20);
         }
         else if(collision.gameObject.tag == "Enemy")
         {
             currentHealth -= 2;
+            healthBar.SetHealth(currentHealth);
+        }
+        else if(collision.gameObject.tag == "StrongEnemy")
+        {
+            currentHealth -= 10;
             healthBar.SetHealth(currentHealth);
         }
     }
