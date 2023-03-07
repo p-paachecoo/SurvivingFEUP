@@ -34,14 +34,30 @@ public class PlayerMovement : MonoBehaviour
 
     private Transform target;
 
+    private Shooting ableToShoot;
+
+
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        ableToShoot = GetComponent<Shooting>();
     }
 
     void Update()
     {
+        if(Input.GetKey(KeyCode.R))
+        {
+            if(ableToShoot.enabled)
+            {
+                ableToShoot.enabled = false;
+            }
+            else
+            {
+                ableToShoot.enabled = true;
+            }
+        }
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -64,21 +80,21 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(rb.position.x >= 30)
+        if(rb.position.x > 60)
         {
-            rb.position = new Vector2(30, rb.position.y);
+            rb.position = new Vector2(60, rb.position.y);
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-        } else if(rb.position.x <= -30)
+        } else if(rb.position.x < -60)
         {
-            rb.position = new Vector2(-30, rb.position.y);
+            rb.position = new Vector2(-60, rb.position.y);
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-        } else if(rb.position.y >= 30)
+        } else if(rb.position.y > 50)
         {
-            rb.position = new Vector2(rb.position.x, 30);
+            rb.position = new Vector2(rb.position.x, 50);
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-        } else if(rb.position.y <= -30)
+        } else if(rb.position.y < -50)
         {
-            rb.position = new Vector2(rb.position.x, -30);
+            rb.position = new Vector2(rb.position.x, -50);
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         } else
         {

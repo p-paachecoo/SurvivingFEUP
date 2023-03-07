@@ -33,6 +33,12 @@ public class Bullet : MonoBehaviour
     {
         Transform player = GameObject.FindWithTag("Player").transform;
         Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+
+        Transform mapCollider1 = GameObject.FindWithTag("MapCollider1").transform;
+        Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), mapCollider1.GetComponent<Collider2D>());
+
+        Transform mapCollider2 = GameObject.FindWithTag("MapCollider2").transform;
+        Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), mapCollider2.GetComponent<Collider2D>());
         
         scoreScript = GameObject.Find("Player").GetComponent<Score>();
 
@@ -88,8 +94,8 @@ public class Bullet : MonoBehaviour
                 transform.Translate(aux_dir.normalized * distanceThisFrame, Space.World);
             }
 
-            if(transform.position.x >= 45 || transform.position.x <= -45 || 
-                transform.position.y >= 45 || transform.position.y <= -45)
+            if(transform.position.x >= 100 || transform.position.x <= -100 || 
+                transform.position.y >= 100 || transform.position.y <= -100)
             {
                 Destroy(gameObject);
             }

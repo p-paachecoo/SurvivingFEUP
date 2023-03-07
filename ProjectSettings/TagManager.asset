@@ -11,6 +11,8 @@ TagManager:
   - LifeCollectible
   - SpeedPowerup
   - StrongEnemy
+  - MapCollider1
+  - MapCollider2
   layers:
   - Default
   - TransparentFX

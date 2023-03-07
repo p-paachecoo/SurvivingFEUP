@@ -34,6 +34,12 @@ public class StrongEnemy : MonoBehaviour
         playerTransform = player.GetComponent<Transform>();
         rb = this.GetComponent<Rigidbody2D>();
 
+        Transform mapCollider1 = GameObject.FindWithTag("MapCollider1").transform;
+        Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), mapCollider1.GetComponent<Collider2D>());
+
+        Transform mapCollider2 = GameObject.FindWithTag("MapCollider2").transform;
+        Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), mapCollider2.GetComponent<Collider2D>());
+
         if(GameObject.FindWithTag("LifeCollectible") != null)
         {
             Transform lifeCollectible = GameObject.FindWithTag("LifeCollectible").transform;

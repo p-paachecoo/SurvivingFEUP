@@ -22,7 +22,7 @@ public class Shooting : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating ("UpdateTarget", 0f, 0.25f);
+        InvokeRepeating("UpdateTarget", 0f, 0.25f);
     }
 
     void Update()

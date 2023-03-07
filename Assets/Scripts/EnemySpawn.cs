@@ -25,8 +25,8 @@ public class EnemySpawn : MonoBehaviour
 
         if(this.gameObject.name == "SpawnPoint (Enemy1)")
         {
-            x = Random.Range(-35, 35);
-            y = -50;
+            x = Random.Range(-50, 50);
+            y = -100;
             pos = new Vector3(x, y, z);
             spawnPoint.position = pos;
 
@@ -35,8 +35,8 @@ public class EnemySpawn : MonoBehaviour
         }
         else if(this.gameObject.name == "SpawnPoint (Enemy2)")
         {
-            x = -50;
-            y = Random.Range(-35, 35);
+            x = -100;
+            y = Random.Range(-50, 50);
             pos = new Vector3(x, y, z);
             spawnPoint.position = pos;
 
@@ -45,8 +45,8 @@ public class EnemySpawn : MonoBehaviour
         }
         else if(this.gameObject.name == "SpawnPoint (Enemy3)")
         {
-            x = Random.Range(-35, 35);
-            y = 50;
+            x = Random.Range(-50, 50);
+            y = 100;
             pos = new Vector3(x, y, z);
             spawnPoint.position = pos;
 
@@ -55,8 +55,8 @@ public class EnemySpawn : MonoBehaviour
         }
         else if(this.gameObject.name == "SpawnPoint (Enemy4)")
         {
-            x = 50;
-            y = Random.Range(-35, 35);
+            x = 100;
+            y = Random.Range(-50, 50);
             pos = new Vector3(x, y, z);
             transform.position = pos;
 
@@ -69,8 +69,8 @@ public class EnemySpawn : MonoBehaviour
 
         if(this.gameObject.name == "SpawnPoint (Enemy1)")
         {
-            x = Random.Range(-35, 35);
-            y = -50;
+            x = Random.Range(-50, 50);
+            y = -100;
             pos = new Vector3(x, y, z);
             spawnPoint.position = pos;
 
@@ -79,8 +79,8 @@ public class EnemySpawn : MonoBehaviour
         }
         else if(this.gameObject.name == "SpawnPoint (Enemy2)")
         {
-            x = -50;
-            y = Random.Range(-35, 35);
+            x = -100;
+            y = Random.Range(-50, 50);
             pos = new Vector3(x, y, z);
             spawnPoint.position = pos;
 
@@ -89,8 +89,8 @@ public class EnemySpawn : MonoBehaviour
         }
         else if(this.gameObject.name == "SpawnPoint (Enemy3)")
         {
-            x = Random.Range(-35, 35);
-            y = 50;
+            x = Random.Range(-50, 50);
+            y = 100;
             pos = new Vector3(x, y, z);
             spawnPoint.position = pos;
 
@@ -99,8 +99,8 @@ public class EnemySpawn : MonoBehaviour
         }
         else if(this.gameObject.name == "SpawnPoint (Enemy4)")
         {
-            x = 50;
-            y = Random.Range(-35, 35);
+            x = 100;
+            y = Random.Range(-50, 50);
             pos = new Vector3(x, y, z);
             transform.position = pos;
 
