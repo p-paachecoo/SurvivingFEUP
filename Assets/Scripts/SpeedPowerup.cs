@@ -20,7 +20,7 @@ public class SpeedPowerUp : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(GameObject.FindWithTag("Enemy") != null)
         {

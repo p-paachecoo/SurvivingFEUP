@@ -19,7 +19,7 @@ public class ScoreCollectible : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(GameObject.FindWithTag("Enemy") != null)
         {

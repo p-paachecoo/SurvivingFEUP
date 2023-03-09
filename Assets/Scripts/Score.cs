@@ -11,13 +11,13 @@ public class Score : MonoBehaviour
     private int highScore;
 
     void Start() {
-        scoreText.text = currentScore.ToString("0");
+        scoreText.text = "Score: " + currentScore.ToString("0");
         highScore = PlayerPrefs.GetInt("HighScore");
     }
 
     public void ScoreUpdate()
     {   
-        scoreText.text = currentScore.ToString("0");
+        scoreText.text = "Score: " + currentScore.ToString("0");
 
         if(currentScore > highScore){
             highScore = currentScore;

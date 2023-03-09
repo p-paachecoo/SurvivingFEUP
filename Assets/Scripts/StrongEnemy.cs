@@ -11,7 +11,7 @@ public class StrongEnemy : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rb;
 
-    private int bulletCounter = 0;
+    private float bulletCounter = 0f;
 
     public GameObject twentyMarkPrefab;
 
@@ -19,8 +19,17 @@ public class StrongEnemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Bullet")
         {
-            bulletCounter += 1;
-            if(bulletCounter == 10)
+            bulletCounter += 0.5f;
+            if(bulletCounter == 20)
+            {
+                GameObject twentyMark = (GameObject) Instantiate(twentyMarkPrefab, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+        }
+        else if(collision.gameObject.tag == "Pencil")
+        {
+            bulletCounter += 2f;
+            if(bulletCounter == 20)
             {
                 GameObject twentyMark = (GameObject) Instantiate(twentyMarkPrefab, transform.position, transform.rotation);
                 Destroy(gameObject);

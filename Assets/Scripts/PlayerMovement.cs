@@ -34,27 +34,37 @@ public class PlayerMovement : MonoBehaviour
 
     private Transform target;
 
-    private Shooting ableToShoot;
+    private Shooting gunStudy;
+    private PG_Shooting pencilGun;
 
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        ableToShoot = GetComponent<Shooting>();
+        gunStudy = GetComponent<Shooting>();
+        pencilGun = GetComponent<PG_Shooting>();
+        pencilGun.enabled = false;
+        gunStudy.enabled = true;
     }
 
     void Update()
     {
         if(Input.GetKey(KeyCode.R))
         {
-            if(ableToShoot.enabled)
+            if(gunStudy.enabled)
             {
-                ableToShoot.enabled = false;
+                gunStudy.enabled = false;
+                pencilGun.enabled = true;
+                shootingTime = 0f;
+                pencilGun.fireRate = 1f;
             }
             else
             {
-                ableToShoot.enabled = true;
+                pencilGun.enabled = false;
+                gunStudy.enabled = true;
+                shootingTime = 0f;
+                gunStudy.fireRate = 5f;
             }
         }
 
@@ -101,14 +111,30 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
 
-        if(shooting.fireRate == 15f)
+        if(gunStudy.enabled)
         {
-            shootingTime += 1;
-
-            if(shootingTime == 600f)
+            if(gunStudy.fireRate == 15f)
             {
-                shootingTime = 0f;
-                shooting.fireRate = 5f;
+                shootingTime += 1;
+
+                if(shootingTime == 600f)
+                {
+                    shootingTime = 0f;
+                    gunStudy.fireRate = 5f;
+                }
+            }
+        }
+        else
+        {
+            if(pencilGun.fireRate == 3f)
+            {
+                shootingTime += 1;
+
+                if(shootingTime == 600f)
+                {
+                    shootingTime = 0f;
+                    pencilGun.fireRate = 1f;
+                }
             }
         }
 
@@ -128,12 +154,20 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "FireRatePowerup")
         {
-            shooting.fireRate += 10f;
-            shootingTime = 0f;
+            if(gunStudy.enabled)
+            {
+                gunStudy.fireRate = 15f;
+                shootingTime = 0f;
+            }
+            else
+            {
+                pencilGun.fireRate = 3f;
+                shootingTime = 0f;
+            }
         } 
         else if(collision.gameObject.tag == "SpeedPowerup")
         {
-            speed += 7.5f;
+            speed = 20f;
             speedTime = 0f;
         } 
         else if(collision.gameObject.tag == "LifeCollectible")

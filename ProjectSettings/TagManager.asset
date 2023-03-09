@@ -13,6 +13,7 @@ TagManager:
   - StrongEnemy
   - MapCollider1
   - MapCollider2
+  - Pencil
   layers:
   - Default
   - TransparentFX

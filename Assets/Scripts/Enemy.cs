@@ -17,6 +17,10 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if(collision.gameObject.tag == "Pencil")
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Start()

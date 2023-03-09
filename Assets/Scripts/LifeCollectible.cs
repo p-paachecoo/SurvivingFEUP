@@ -19,7 +19,7 @@ public class LifeCollectible : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(GameObject.FindWithTag("Enemy") != null)
         {
