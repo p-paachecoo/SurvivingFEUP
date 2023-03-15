@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
 
     public SpriteRenderer playerSprite;
 
+    public GameObject weapon1;
+    public GameObject weapon2;
+
 
     // Private Fields
     private float shootingTime = 0f;
@@ -55,14 +58,18 @@ public class PlayerMovement : MonoBehaviour
             if(gunStudy.enabled)
             {
                 gunStudy.enabled = false;
+                weapon1.SetActive(false);
                 pencilGun.enabled = true;
+                weapon2.SetActive(true);
                 shootingTime = 0f;
                 pencilGun.fireRate = 1f;
             }
             else
             {
                 pencilGun.enabled = false;
+                weapon2.SetActive(false);
                 gunStudy.enabled = true;
+                weapon1.SetActive(true);
                 shootingTime = 0f;
                 gunStudy.fireRate = 5f;
             }
