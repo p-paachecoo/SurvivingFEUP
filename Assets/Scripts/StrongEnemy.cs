@@ -35,6 +35,26 @@ public class StrongEnemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        if (collision.gameObject.tag == "LifeCollectible") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        } else if (collision.gameObject.tag == "ScoreCollectible") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        } else if (collision.gameObject.tag == "FireRatePowerup") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        } else if (collision.gameObject.tag == "SpeedPowerup") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        } else if (collision.gameObject.tag == "MapCollider1") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        } else if (collision.gameObject.tag == "MapCollider2") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        } else if (collision.gameObject.tag == "EnemyBullet") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        } else if (collision.gameObject.tag == "StrongEnemy") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        } else if (collision.gameObject.tag == "Enemy") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
     }
 
     void Start()

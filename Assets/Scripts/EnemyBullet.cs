@@ -2,34 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     private Transform target;
-    public float speed = 15f;
-    private Vector3 aux_dir = new Vector3();
-
-    Score scoreScript;
+    public float speed = 10f;
+    private Vector3 dir;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Player")
         {
-            target = null;
-            scoreScript.AddScore(1);
             Destroy(gameObject);
         }
-
-        if(collision.gameObject.tag == "StrongEnemy")
+        if(collision.gameObject.tag == "Bullet")
         {
             Destroy(gameObject);
         }
 
-        if(collision.gameObject.tag == "EnemyBullet")
-        {
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.tag == "Bullet") {
+        if (collision.gameObject.tag == "EnemyBullet") {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         } else if (collision.gameObject.tag == "LifeCollectible") {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
@@ -39,11 +29,13 @@ public class Bullet : MonoBehaviour
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         } else if (collision.gameObject.tag == "SpeedPowerup") {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        } else if (collision.gameObject.tag == "Enemy") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        } else if (collision.gameObject.tag == "StrongEnemy") {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         } else if (collision.gameObject.tag == "MapCollider1") {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         } else if (collision.gameObject.tag == "MapCollider2") {
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-        } else if (collision.gameObject.tag == "Player") {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
     }
@@ -54,18 +46,13 @@ public class Bullet : MonoBehaviour
     }
 
     void Start()
-    {
-        Transform player = GameObject.FindWithTag("Player").transform;
-        Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
-
+    {        
         Transform mapCollider1 = GameObject.FindWithTag("MapCollider1").transform;
         Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), mapCollider1.GetComponent<Collider2D>());
 
         Transform mapCollider2 = GameObject.FindWithTag("MapCollider2").transform;
         Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), mapCollider2.GetComponent<Collider2D>());
         
-        scoreScript = GameObject.Find("Player").GetComponent<Score>();
-
         if(GameObject.FindWithTag("LifeCollectible") != null)
         {
             Transform lifeCollectible = GameObject.FindWithTag("LifeCollectible").transform;
@@ -90,19 +77,25 @@ public class Bullet : MonoBehaviour
             Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), speedPowerup.GetComponent<Collider2D>());
         }
 
-    }
+        if(GameObject.FindWithTag("Enemy") != null)
+        {
+            Transform enemy = GameObject.FindWithTag("Enemy").transform;
+            Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), enemy.GetComponent<Collider2D>());
+        }
+    
+        if(GameObject.FindWithTag("StrongEnemy") != null)
+        {
+            Transform strong_enemy = GameObject.FindWithTag("StrongEnemy").transform;
+            Physics2D.IgnoreCollision(transform.GetComponent<Collider2D>(), strong_enemy.GetComponent<Collider2D>());
+        }
 
-    void Update()
-    {
-        Vector3 dir = new Vector3(); 
-        float distanceThisFrame = speed * Time.deltaTime;
+        dir = new Vector3(); 
 
         if(transform != null)
         {
             if(target != null)
             {
                 dir = target.position - transform.position;
-                aux_dir = dir;
                 Vector3 t = target.transform.position;
                 t.z = 0f;
                 Vector3 objectPos = transform.position;
@@ -111,19 +104,19 @@ public class Bullet : MonoBehaviour
                 float angle = (Mathf.Atan2(t.y, t.x) * Mathf.Rad2Deg) - 90f;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
                 
-                transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-
-            } else if(target == null)
-            {
-                transform.Translate(aux_dir.normalized * distanceThisFrame, Space.World);
             }
+        }
+    }
 
-            if(transform.position.x >= 100 || transform.position.x <= -100 || 
-                transform.position.y >= 100 || transform.position.y <= -100)
-            {
-                Destroy(gameObject);
-            }
+    void Update()
+    {
+        float distanceThisFrame = speed * Time.deltaTime;
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
+        if(transform.position.x >= 100 || transform.position.x <= -100 || 
+            transform.position.y >= 100 || transform.position.y <= -100)
+        {
+            Destroy(gameObject);
         }
     }
 }
