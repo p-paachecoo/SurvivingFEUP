@@ -185,15 +185,20 @@ public class PlayerMovement : MonoBehaviour
         else if(collision.gameObject.tag == "ScoreCollectible")
         {
             score.AddScore(20);
-        }
+        } 
         else if(collision.gameObject.tag == "Enemy")
         {
-            currentHealth -= 2;
+            currentHealth -= 5;
             healthBar.SetHealth(currentHealth);
-        }
+        } 
         else if(collision.gameObject.tag == "StrongEnemy")
         {
             currentHealth -= 10;
+            healthBar.SetHealth(currentHealth);
+        } 
+        else if(collision.gameObject.tag == "EnemyBullet")
+        {
+            currentHealth -= 2;
             healthBar.SetHealth(currentHealth);
         }
     }
